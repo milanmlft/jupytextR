@@ -1,0 +1,12 @@
+Package: jupytext
+Title: R wrapper for jupytext
+Version: 0.0.0.9000
+Authors@R:
+    person("Milan", "Malfait", , "milan.malfait94@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-9144-3701"))
+Description: Convert between Jupyter notebooks, [R]Markdown documents and scripts
+    (R, Python, Julia, ...), using the jupytext Python package.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
