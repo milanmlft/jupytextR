@@ -23,3 +23,8 @@ toy_ipynb_data <- function() {
         nbformat_minor = 2L
     )
 }
+
+## Get the source for a given cell from an in-memory jupyter notebook
+get_cell_source <- function(nb_data, cell) {
+    nb_data$cells[[cell]]$source
+}
