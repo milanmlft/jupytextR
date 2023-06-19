@@ -1,8 +1,16 @@
-toy_nb_file <- test_path("fixtures", "toy.ipynb")
+test_that("Converting from R Markdown to ipynb works", {
+    tempdir <- withr::local_tempdir()
+    restore_fixtures(tempdir)
+    rmd_file <- file.path(tempdir, "toy2.Rmd")
 
-test_that("Reading jupyter notebooks works", {
-    res <- .read(input = toy_nb_file)
+    expect_message(
+        res <- jupytext(input = rmd_file, to = "ipynb", quiet = FALSE),
+        paste("Converting", rmd_file, "to", .with_ext(rmd_file, "ipynb"))
+    )
+    expect_equal(res, file.path(tempdir, "toy2.ipynb"))
+    expect_true(file.exists(res))
 
+    res <- .read(res)
     expect_type(res, "environment")
     expect_s3_class(res, "nbformat.notebooknode.NotebookNode")
 
@@ -10,10 +18,12 @@ test_that("Reading jupyter notebooks works", {
     expect_equal(get_cell_source(res, 2), "print(\"Hi R Markdown!\")")
 })
 
-test_that("Writing jupyter notebooks works", {
-    nb_obj <- .read(input = toy_nb_file)
-    out_file <- tempfile(fileext = ".ipynb")
-    .write(nb_obj, out_file)
+test_that("Converting from ipynb to Rmd works", {
+    tempdir <- withr::local_tempdir()
+    restore_fixtures(tempdir)
+    ipynb_file <- file.path(tempdir, "toy.ipynb")
 
-    expect_true(file.exists(out_file))
+    res <- jupytext(input = ipynb_file, to = "Rmd", quiet = TRUE)
+    expect_equal(res, file.path(tempdir, "toy.Rmd"))
+    expect_true(file.exists(res))
 })

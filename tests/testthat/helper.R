@@ -1,3 +1,9 @@
+## Copy toy notebooks to a new directory for testing
+restore_fixtures <- function(dir) {
+    fixtures <- list.files(test_path("fixtures"), full.names = TRUE)
+    file.copy(fixtures, dir)
+}
+
 ## Construct toy Jupyter notebook from JSON data
 toy_ipynb_data <- function() {
     list(
