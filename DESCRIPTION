@@ -9,6 +9,7 @@ Description: Convert between Jupyter notebooks, [R]Markdown documents and script
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
+    basilisk,
     reticulate
 Suggests:
     testthat (>= 3.0.0)
@@ -17,3 +18,4 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 URL: https://github.com/milanmlft/r-jupytext
 BugReports: https://github.com/milanmlft/r-jupytext/issues
+StagedInstall: no
