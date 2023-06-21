@@ -1,20 +1,34 @@
+#' @importFrom basilisk basiliskStart basiliskStop basiliskRun
 jupytext <- function(input, to, output = .with_ext(input, to), quiet = FALSE) {
+    proc <- local_basiliskEnv(jupytext_env)
+
     if (!quiet) message("Converting ", input, " to ", output)
-    nb <- .read(input)
-    .write(nb, output)
+    .read(proc, input)
+    .write(proc, output)
+
     invisible(output)
 }
 
-# TODO: refactor such that reticluate::import() needs to happen only once, by passing a
-# `basiliskEnvironment` to the helper functions
-.read <- function(input, ...) {
-    py_jupytext <- reticulate::import("jupytext", convert = FALSE)
-    py_jupytext$read(input, ...)
+.read <- function(proc, input, ...) {
+    basiliskRun(proc, function(input, store) {
+        py_jupytext <- reticulate::import("jupytext")
+        store$nb <- py_jupytext$read(input)
+
+        invisible(NULL)
+    }, input = input, persist = TRUE)
 }
 
-.write <- function(notebook, output) {
-    py_jupytext <- reticulate::import("jupytext", convert = FALSE)
-    py_jupytext$write(notebook, output)
+.write <- function(proc, output) {
+    basiliskRun(proc, function(output, store) {
+        stopifnot(!is.null(store$jupytext))
+        stopifnot(!is.null(store$nb))
+
+        py_jupytext <- store$jupytext
+        notebook <- reticulate::r_to_py(store$nb)
+        py_jupytext$write(notebook, output)
+
+        invisible(NULL)
+    }, output = output, persist = TRUE)
 }
 
 .with_ext <- function(filename, ext) {
