@@ -1,6 +1,7 @@
 #' @importFrom basilisk basiliskStart basiliskStop basiliskRun
 jupytext <- function(input, to, output = .with_ext(input, to), quiet = FALSE) {
     proc <- local_basiliskEnv(jupytext_env)
+    .import_jupytext(proc)
 
     if (!quiet) message("Converting ", input, " to ", output)
     .read(proc, input)
@@ -11,7 +12,7 @@ jupytext <- function(input, to, output = .with_ext(input, to), quiet = FALSE) {
 
 .read <- function(proc, input, ...) {
     basiliskRun(proc, function(input, store) {
-        py_jupytext <- reticulate::import("jupytext")
+        py_jupytext <- store$jupytext
         store$nb <- py_jupytext$read(input)
 
         invisible(NULL)
