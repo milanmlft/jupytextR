@@ -32,6 +32,5 @@ toy_ipynb_data <- function() {
 
 ## Get the source for a given cell from an in-memory jupyter notebook
 get_cell_source <- function(nb_data, cell) {
-    nb_data <- reticulate::py_to_r(nb_data)
     nb_data$cells[[cell]]$source
 }
