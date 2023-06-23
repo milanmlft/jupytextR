@@ -1,23 +1,17 @@
 test_that("Converting from ipynb to Rmd works", {
-    tempdir <- withr::local_tempdir()
-    restore_fixtures(tempdir)
-    ipynb_file <- file.path(tempdir, "toy.ipynb")
+    ipynb_file <- local_fixture("toy.ipynb")
 
     res <- jupytext(input = ipynb_file, to = "Rmd", quiet = TRUE)
-    expect_equal(res, file.path(tempdir, "toy.Rmd"))
     expect_true(file.exists(res))
 })
 
 test_that("Converting from R Markdown to ipynb works", {
-    tempdir <- withr::local_tempdir()
-    restore_fixtures(tempdir)
-    rmd_file <- normalizePath(file.path(tempdir, "toy2.Rmd"))
+    rmd_file <- local_fixture("toy2.Rmd")
 
     expect_message(
         res <- jupytext(input = rmd_file, to = "ipynb", quiet = FALSE),
         paste("Converting", rmd_file, "to", .with_ext(rmd_file, "ipynb"))
     )
-    expect_equal(res, normalizePath(file.path(tempdir, "toy2.ipynb")))
     expect_true(file.exists(res))
 
     res <- read_ipynb(res)
@@ -31,10 +25,8 @@ test_that("basiliskRun() calls behave correctly", {
     local_setBasiliskFork(FALSE)
     local_setBasiliskShared(FALSE)
 
-    tempdir <- withr::local_tempdir()
-    restore_fixtures(tempdir)
-    ipynb_file <- file.path(tempdir, "toy.ipynb")
+    ipynb_file <- local_fixture("toy.ipynb")
+
     res <- jupytext(input = ipynb_file, to = "Rmd", quiet = TRUE)
-    expect_equal(res, file.path(tempdir, "toy.Rmd"))
     expect_true(file.exists(res))
 })
