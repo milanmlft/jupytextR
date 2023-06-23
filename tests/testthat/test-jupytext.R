@@ -17,7 +17,7 @@ test_that("Converting from R Markdown to ipynb works", {
         res <- jupytext(input = rmd_file, to = "ipynb", quiet = FALSE),
         paste("Converting", rmd_file, "to", .with_ext(rmd_file, "ipynb"))
     )
-    expect_equal(res, file.path(tempdir, "toy2.ipynb"))
+    expect_equal(res, normalizePath(file.path(tempdir, "toy2.ipynb")))
     expect_true(file.exists(res))
 
     res <- read_ipynb(res)
