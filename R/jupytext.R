@@ -25,7 +25,7 @@ jupytext <- function(input, to, output = .with_ext(input, to), quiet = FALSE) {
         stopifnot(!is.null(store$nb))
 
         py_jupytext <- store$jupytext
-        notebook <- reticulate::r_to_py(store$nb)
+        notebook <- store$nb
         py_jupytext$write(notebook, output)
 
         invisible(NULL)
