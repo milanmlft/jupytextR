@@ -27,7 +27,6 @@ test_that("Converting from R Markdown to ipynb works", {
     expect_equal(get_cell_source(res, 2), "print(\"Hi R Markdown!\")")
 })
 
-
 test_that("basiliskRun() calls behave correctly", {
     local_setBasiliskFork(FALSE)
     local_setBasiliskShared(FALSE)
