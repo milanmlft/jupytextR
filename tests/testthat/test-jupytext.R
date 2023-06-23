@@ -27,3 +27,15 @@ test_that("Converting from R Markdown to ipynb works", {
     expect_equal(get_cell_source(res, 2), "print(\"Hi R Markdown!\")")
 })
 
+
+test_that("basiliskRun() calls behave correctly", {
+    local_setBasiliskFork(FALSE)
+    local_setBasiliskShared(FALSE)
+
+    tempdir <- withr::local_tempdir()
+    restore_fixtures(tempdir)
+    ipynb_file <- file.path(tempdir, "toy.ipynb")
+    res <- jupytext(input = ipynb_file, to = "Rmd", quiet = TRUE)
+    expect_equal(res, file.path(tempdir, "toy.Rmd"))
+    expect_true(file.exists(res))
+})
