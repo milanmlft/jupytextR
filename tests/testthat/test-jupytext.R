@@ -11,7 +11,7 @@ test_that("Converting from ipynb to Rmd works", {
 test_that("Converting from R Markdown to ipynb works", {
     tempdir <- withr::local_tempdir()
     restore_fixtures(tempdir)
-    rmd_file <- file.path(tempdir, "toy2.Rmd")
+    rmd_file <- normalizePath(file.path(tempdir, "toy2.Rmd"))
 
     expect_message(
         res <- jupytext(input = rmd_file, to = "ipynb", quiet = FALSE),
