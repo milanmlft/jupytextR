@@ -12,6 +12,7 @@ Convert between Jupyter notebooks, [R]Markdown documents and scripts (R, Python,
 Useful links:
 \itemize{
   \item \url{https://github.com/milanmlft/jupytextR}
+  \item \url{https://milanmlft.github.io/jupytextR/}
   \item Report bugs at \url{https://github.com/milanmlft/jupytextR/issues}
 }
 

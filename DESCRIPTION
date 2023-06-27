@@ -17,6 +17,6 @@ Suggests:
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/milanmlft/jupytextR
+URL: https://github.com/milanmlft/jupytextR, https://milanmlft.github.io/jupytextR/
 BugReports: https://github.com/milanmlft/jupytextR/issues
 StagedInstall: no
