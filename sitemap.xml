@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/404.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/index.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/reference/dot-import_jupytext.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/reference/jupytext.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/reference/jupytextR-package.html</loc>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/jupytextR/reference/read_ipynb.html</loc>
+  </url>
+</urlset>
