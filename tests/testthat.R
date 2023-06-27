@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(jupytext)
+library(jupytextR)
 
 test_check("jupytext")

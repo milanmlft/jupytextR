@@ -27,7 +27,7 @@
 #' @importFrom basilisk basiliskStart basiliskStop basiliskRun
 #'
 #' @examples
-#' library(jupytext)
+#' library(jupytextR)
 #'
 #' ## Create toy RMarkdown file
 #' rmd_data <- "Hi **Markdown**!

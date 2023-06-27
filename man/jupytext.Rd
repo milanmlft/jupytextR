@@ -36,7 +36,7 @@ writes it to the desired format using \code{jupytext.write}, using the
 \href{https://jupytext.readthedocs.io/en/latest/using-library.html}{\code{jupytext} API}.
 }
 \examples{
-library(jupytext)
+library(jupytextR)
 
 ## Create toy RMarkdown file
 rmd_data <- "Hi **Markdown**!
