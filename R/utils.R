@@ -9,7 +9,6 @@
 #'
 #' @return An R list containing the notebook data.
 #'
-#' @importFrom basilisk basiliskRun
 #' @keywords internal
 read_ipynb <- function(input) {
     proc <- local_basiliskEnv(jupytext_env)
@@ -23,7 +22,6 @@ read_ipynb <- function(input) {
 
 # `local_` helpers for temporarily setting basilisk options -----------------------------------
 
-#' @importFrom basilisk basiliskStart basiliskStop
 local_basiliskEnv <- function(env, envir = parent.frame()) {
     proc <- basiliskStart(jupytext_env)
     withr::defer(basiliskStop(proc),  envir = envir)

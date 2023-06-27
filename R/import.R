@@ -7,7 +7,6 @@
 #'   be passed to subsequent `basiliskRun()` calls by setting `persist = TRUE`, passing a `store`
 #'   argument to `fun` and accesing the module with `store$jupytext`.
 #'
-#' @importFrom basilisk basiliskRun
 #' @keywords internal
 .import_jupytext <- function(proc) {
     py_import <- function(store) {

@@ -24,7 +24,6 @@
 #' [`jupytext` API](https://jupytext.readthedocs.io/en/latest/using-library.html).
 #'
 #' @export
-#' @importFrom basilisk basiliskStart basiliskStop basiliskRun
 #'
 #' @examples
 #' library(jupytextR)
