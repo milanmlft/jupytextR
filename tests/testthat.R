@@ -9,4 +9,4 @@
 library(testthat)
 library(jupytextR)
 
-test_check("jupytext")
+test_check("jupytextR")
