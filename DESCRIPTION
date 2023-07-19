@@ -8,7 +8,7 @@ Description: Convert between Jupyter notebooks, [R]Markdown documents and script
     (R, Python, Julia, ...), using the jupytext Python package.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends: R (>= 4.0)
+Depends: R (>= 4.2)
 Imports:
     basilisk,
     reticulate,
