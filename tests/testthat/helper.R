@@ -7,7 +7,7 @@ local_fixture <- function(file, envir = parent.frame()) {
 
 ## Copy toy notebooks to a new directory for testing
 restore_fixtures <- function(dir) {
-    fixtures <- list.files(test_path("fixtures"), full.names = TRUE)
+    fixtures <- list.files(testthat::test_path("fixtures"), full.names = TRUE)
     file.copy(fixtures, dir)
 }
 
