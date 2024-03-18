@@ -14,11 +14,11 @@ test_that("Converting from R Markdown to ipynb works", {
     res <- jupytext(input = rmd_file, to = "ipynb", quiet = TRUE)
     expect_true(file.exists(res))
 
-    res <- read_ipynb(res)
-    expect_type(res, "list")
+    ipynb_file <- read_ipynb(res)
+    expect_type(ipynb_file, "environment")
 
-    expect_equal(get_cell_source(res, 1), "Hi **Markdown**!")
-    expect_equal(get_cell_source(res, 2), "print(\"Hi R Markdown!\")")
+    expect_equal(get_cell_source(ipynb_file, 1), "Hi **Markdown**!")
+    expect_equal(get_cell_source(ipynb_file, 2), "print(\"Hi R Markdown!\")")
 })
 
 test_that("basiliskRun() calls behave correctly", {
