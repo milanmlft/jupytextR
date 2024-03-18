@@ -43,6 +43,10 @@ jobs:
                   http-user-agent: ${{ matrix.config.http-user-agent }}
                   use-public-rspm: true
 
+            # Install miniconda manually, to prevent installation errors on GHA runners
+            - name: Setup Miniconda
+              uses: conda-incubator/setup-miniconda@v3.0.3
+
             - name: Install R dependencies
               uses: r-lib/actions/setup-r-dependencies@55acd27e7b238c53bbe735b7a459c203a3b3d579 # v2
               with:
