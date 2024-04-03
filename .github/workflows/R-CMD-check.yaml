@@ -45,7 +45,7 @@ jobs:
 
             # Install miniconda manually, to prevent installation errors on GHA runners
             - name: Setup Miniconda
-              uses: conda-incubator/setup-miniconda@v3.0.3
+              uses: conda-incubator/setup-miniconda@030178870c779d9e5e1b4e563269f3aa69b04081 # v3.0.3
 
             - name: Install R dependencies
               uses: r-lib/actions/setup-r-dependencies@55acd27e7b238c53bbe735b7a459c203a3b3d579 # v2
