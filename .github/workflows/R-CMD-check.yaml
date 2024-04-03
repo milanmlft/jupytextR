@@ -33,6 +33,7 @@ jobs:
         env:
             GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
             R_KEEP_PKG_SOURCE: yes
+            BASILISK_USE_SYSTEM_DIR: 1
 
         steps:
             - name: Checkout repo
@@ -56,11 +57,9 @@ jobs:
                   BiocManager::install("basilisk.utils")
 
             # Install conda for basilisk manually
-            - name: Setup basilisk conda
+            - name: Check basilisk conda installation
               shell: Rscript {0}
               run: |
-                  Sys.setenv(BASILISK_USE_SYSTEM_DIR=1)
-                  basilisk.utils::installConda()
                   basilisk.utils::getCondaDir()
 
             - name: Install R dependencies
