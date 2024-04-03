@@ -53,8 +53,7 @@ jobs:
               shell: Rscript {0}
               run: |
                   install.packages("BiocManager")
-                  BiocManager::install("basilisk")
-                  BiocManager::install("basilisk.utils")
+                  BiocManager::install("basilisk", type="source")
 
             # Install conda for basilisk manually
             - name: Check basilisk conda installation
