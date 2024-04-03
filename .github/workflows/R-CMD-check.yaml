@@ -50,10 +50,10 @@ jobs:
                   use-public-rspm: true
 
             - name: Install basilisk
-              shell: Rscript {0}
               run: |
-                  install.packages("BiocManager")
-                  BiocManager::install("basilisk", type="source")
+                  Rscript -e 'install.packages("BiocManager")'
+                  unset DYLD_FALLBACK_LIBRARY_PATH # avoids conda installation error on macOS
+                  Rscript -e 'BiocManager::install("basilisk", type="source")'
 
             # Install conda for basilisk manually
             - name: Check basilisk conda installation
