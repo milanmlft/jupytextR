@@ -43,9 +43,16 @@ jobs:
                   http-user-agent: ${{ matrix.config.http-user-agent }}
                   use-public-rspm: true
 
-            # Install miniconda manually, to prevent installation errors on GHA runners
-            - name: Setup Miniconda
-              uses: conda-incubator/setup-miniconda@v3.0.3
+            - name: Install basilisk.utils
+              shell: Rscript {0}
+              run: |
+                  install.packages("BiocManager")
+                  BiocManager::install("basilisk.utils")
+
+            # Install conda for basilisk manually
+            - name: Setup basilisk conda
+              shell: Rscript {0}
+              run: basilisk.utils::installConda()
 
             - name: Install R dependencies
               uses: r-lib/actions/setup-r-dependencies@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
