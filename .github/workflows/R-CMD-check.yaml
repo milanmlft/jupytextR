@@ -20,6 +20,7 @@ jobs:
             matrix:
                 config:
                     - { os: macos-latest, r: "release" }
+                    - { os: macos-13, r: "release" }
                     - { os: windows-latest, r: "release" }
                     - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
                     - { os: ubuntu-latest, r: "release" }
@@ -43,7 +44,7 @@ jobs:
                   http-user-agent: ${{ matrix.config.http-user-agent }}
                   use-public-rspm: true
 
-            - name: Install basilisk.utils
+            - name: Install basilisk
               shell: Rscript {0}
               run: |
                   install.packages("BiocManager")
