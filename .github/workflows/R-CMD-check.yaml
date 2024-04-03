@@ -49,23 +49,23 @@ jobs:
                   http-user-agent: ${{ matrix.config.http-user-agent }}
                   use-public-rspm: true
 
+            - name: Install R dependencies
+              uses: r-lib/actions/setup-r-dependencies@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
+              with:
+                  extra-packages: any::rcmdcheck
+                  needs: check
+
             - name: Install basilisk
               run: |
                   Rscript -e 'install.packages("BiocManager")'
-                  unset DYLD_FALLBACK_LIBRARY_PATH # avoids conda installation error on macOS
-                  Rscript -e 'BiocManager::install("basilisk", type="source")'
+                  unset DYLD_FALLBACK_LIBRARY_PATH  && \ # avoids conda installation error on macOS
+                    Rscript -e 'BiocManager::install("basilisk", type="source")'
 
             # Install conda for basilisk manually
             - name: Check basilisk conda installation
               shell: Rscript {0}
               run: |
                   basilisk.utils::getCondaDir()
-
-            - name: Install R dependencies
-              uses: r-lib/actions/setup-r-dependencies@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
-              with:
-                  extra-packages: any::rcmdcheck
-                  needs: check
 
             - name: Run R CMD check
               uses: r-lib/actions/check-r-package@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
