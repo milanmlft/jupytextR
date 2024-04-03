@@ -9,6 +9,11 @@ on:
 
 name: R-CMD-check
 
+# Only run actions on the most recent push to a branch
+concurrency:
+    group: "${{ github.workflow }}-${{ github.head_ref }}"
+    cancel-in-progress: true
+
 jobs:
     R-CMD-check:
         runs-on: ${{ matrix.config.os }}
