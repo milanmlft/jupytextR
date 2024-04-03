@@ -20,7 +20,6 @@ jobs:
             matrix:
                 config:
                     - { os: macos-latest, r: "release" }
-                    - { os: macos-13, r: "release" }
                     - { os: windows-latest, r: "release" }
                     - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
                     - { os: ubuntu-latest, r: "release" }
@@ -54,7 +53,10 @@ jobs:
             # Install conda for basilisk manually
             - name: Setup basilisk conda
               shell: Rscript {0}
-              run: basilisk.utils::installConda()
+              run: |
+                  Sys.setenv(BASILISK_USE_SYSTEM_DIR=1)
+                  basilisk.utils::installConda()
+                  basilisk.utils::getCondaDir()
 
             - name: Install R dependencies
               uses: r-lib/actions/setup-r-dependencies@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
