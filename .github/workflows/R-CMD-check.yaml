@@ -34,10 +34,10 @@ jobs:
               uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
 
             - name: Set up pandoc
-              uses: r-lib/actions/setup-pandoc@b7e68d63e51bdf225997973e2add36d551f60f02 # v2
+              uses: r-lib/actions/setup-pandoc@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
 
             - name: Set up R
-              uses: r-lib/actions/setup-r@b7e68d63e51bdf225997973e2add36d551f60f02 # v2
+              uses: r-lib/actions/setup-r@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
               with:
                   r-version: ${{ matrix.config.r }}
                   http-user-agent: ${{ matrix.config.http-user-agent }}
@@ -48,12 +48,12 @@ jobs:
               uses: conda-incubator/setup-miniconda@a4260408e20b96e80095f42ff7f1a15b27dd94ca # v3.0.4
 
             - name: Install R dependencies
-              uses: r-lib/actions/setup-r-dependencies@b7e68d63e51bdf225997973e2add36d551f60f02 # v2
+              uses: r-lib/actions/setup-r-dependencies@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
               with:
                   extra-packages: any::rcmdcheck
                   needs: check
 
             - name: Run R CMD check
-              uses: r-lib/actions/check-r-package@b7e68d63e51bdf225997973e2add36d551f60f02 # v2
+              uses: r-lib/actions/check-r-package@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
               with:
                   upload-snapshots: true
