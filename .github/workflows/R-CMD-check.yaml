@@ -56,7 +56,7 @@ jobs:
                   needs: check
 
             - name: Install basilisk
-              if: runner.os == 'macOS
+              if: runner.os == 'macOS'
               run: |
                   Rscript -e 'install.packages("BiocManager")'
                   unset DYLD_FALLBACK_LIBRARY_PATH  && \ # avoids conda installation error on macOS
