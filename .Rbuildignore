@@ -6,3 +6,6 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^\.lintr$
+^\.renovaterc\.json5$
+^\.vscode$
