@@ -37,20 +37,24 @@ jobs:
 
         steps:
             - name: Checkout repo
-              uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+              uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
 
             - name: Set up pandoc
-              uses: r-lib/actions/setup-pandoc@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
+              uses: r-lib/actions/setup-pandoc@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
 
             - name: Set up R
-              uses: r-lib/actions/setup-r@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
+              uses: r-lib/actions/setup-r@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
               with:
                   r-version: ${{ matrix.config.r }}
                   http-user-agent: ${{ matrix.config.http-user-agent }}
                   use-public-rspm: true
 
+            # Install miniconda manually, to prevent installation errors on GHA runners
+            - name: Setup Miniconda
+              uses: conda-incubator/setup-miniconda@a4260408e20b96e80095f42ff7f1a15b27dd94ca # v3.0.4
+
             - name: Install R dependencies
-              uses: r-lib/actions/setup-r-dependencies@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
+              uses: r-lib/actions/setup-r-dependencies@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
               with:
                   extra-packages: any::rcmdcheck
                   needs: check
@@ -69,6 +73,6 @@ jobs:
                   basilisk.utils::getCondaDir()
 
             - name: Run R CMD check
-              uses: r-lib/actions/check-r-package@7171bbdc297d5a76f04914d60e5c8144991e3011 # v2
+              uses: r-lib/actions/check-r-package@929c772977a3a13c8733b363bf5a2f685c25dd91 # v2
               with:
                   upload-snapshots: true
