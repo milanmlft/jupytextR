@@ -24,7 +24,9 @@ jobs:
             fail-fast: false
             matrix:
                 config:
-                    - { os: macos-latest, r: "release" }
+                    # TODO: fix broken macOS workflow
+                    # https://github.com/milanmlft/jupytextR/issues/28
+                    # - { os: macos-latest, r: "release" }
                     - { os: windows-latest, r: "release" }
                     - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
                     - { os: ubuntu-latest, r: "release" }
