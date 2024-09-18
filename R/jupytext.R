@@ -62,8 +62,8 @@ jupytext <- function(input, to, output = .with_ext(input, to), quiet = FALSE) {
 
 .write <- function(proc, output) {
     basiliskRun(proc, function(output, store) {
-        stopifnot(!is.null(store$jupytext))
-        stopifnot(!is.null(store$nb))
+    stopifnot(!is.null(store$jupytext))
+    stopifnot(!is.null(store$nb))
 
         py_jupytext <- store$jupytext
         notebook <- store$nb
