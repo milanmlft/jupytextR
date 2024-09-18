@@ -9,10 +9,10 @@
 #'
 #' @keywords internal
 .import_jupytext <- function(proc) {
-    py_import <- function(store) {
-        module <- reticulate::import("jupytext", convert = FALSE)
-        store$jupytext <- module
-        invisible(NULL)
-    }
-    basiliskRun(proc, py_import, persist = TRUE)
+  py_import <- function(store) {
+    module <- reticulate::import("jupytext", convert = FALSE)
+    store$jupytext <- module
+    invisible(NULL)
+  }
+  basiliskRun(proc, py_import, persist = TRUE)
 }
