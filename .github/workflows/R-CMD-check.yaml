@@ -1,63 +1,62 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
-    push:
-        branches: [main, master]
-    pull_request:
-        branches: [main, master]
-    workflow_dispatch:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
 
 name: R-CMD-check
 
 # Only run actions on the most recent push to a branch
 concurrency:
-    group: "${{ github.workflow }}-${{ github.head_ref }}"
-    cancel-in-progress: true
+  group: "${{ github.workflow }}-${{ github.head_ref }}"
+  cancel-in-progress: true
 
 jobs:
-    R-CMD-check:
-        runs-on: ${{ matrix.config.os }}
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
 
-        name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
-        strategy:
-            fail-fast: false
-            matrix:
-                config:
-                    # TODO: fix broken macOS workflow
-                    # https://github.com/milanmlft/jupytextR/issues/28
-                    # - { os: macos-latest, r: "release" }
-                    - { os: windows-latest, r: "release" }
-                    - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
-                    - { os: ubuntu-latest, r: "release" }
-                    - { os: ubuntu-latest, r: "oldrel-1" }
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: macos-latest, r: "release" }
+          - { os: windows-latest, r: "release" }
+          - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
+          - { os: ubuntu-latest, r: "release" }
+          - { os: ubuntu-latest, r: "oldrel-1" }
 
-        env:
-            GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-            R_KEEP_PKG_SOURCE: yes
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
 
-        steps:
-            - name: Checkout repo
-              uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
-            - name: Set up pandoc
-              uses: r-lib/actions/setup-pandoc@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
+      - name: Set up pandoc
+        uses: r-lib/actions/setup-pandoc@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
 
-            - name: Set up R
-              uses: r-lib/actions/setup-r@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
-              with:
-                  r-version: ${{ matrix.config.r }}
-                  http-user-agent: ${{ matrix.config.http-user-agent }}
-                  use-public-rspm: true
+      - name: Set up R
+        uses: r-lib/actions/setup-r@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
 
-            - name: Install R dependencies
-              uses: r-lib/actions/setup-r-dependencies@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
-              with:
-                  cache-version: 3
-                  extra-packages: any::rcmdcheck
-                  needs: check
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
+        with:
+          cache-version: 3
+          extra-packages: any::rcmdcheck
+          needs: check
 
-            - name: Run R CMD check
-              uses: r-lib/actions/check-r-package@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
-              with:
-                  upload-snapshots: true
+      - name: Run R CMD check
+        uses: r-lib/actions/check-r-package@bd49c52ffe281809afa6f0fecbf37483c5dd0b93 # v2
+        with:
+          upload-snapshots: true
+          build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
