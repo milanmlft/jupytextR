@@ -1,0 +1,37 @@
+# jupytextR
+
+The goal of the *jupytextR* package is to provide an R wrapper for the
+[jupytext](https://github.com/mwouts/jupytext) Python library.
+
+## Installation
+
+You can install the development version of jupytextR from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("milanmlft/jupytextR")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(jupytextR)
+
+## Converting from Rmd to ipynb
+jupytext("path/to/file.Rmd", to = "ipynb")
+
+## Converting from ipynb to Rmd
+jupytext("path/to/file.ipynb", to = "Rmd")
+```
+
+# Package index
+
+## All functions
+
+- [`jupytext()`](https://milanmlft.github.io/jupytextR/reference/jupytext.md)
+  : Convert Jupyter Notebooks to (R)Markdown, Julia, Python or R scripts
+  and vice-versa
+
