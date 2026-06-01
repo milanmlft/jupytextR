@@ -70,13 +70,13 @@ jupytext(rmd_file, to = "ipynb")
 #> Installing pyenv ...
 #> Done! pyenv has been installed to '/home/runner/.local/share/r-reticulate/pyenv/bin/pyenv'.
 #> Using Python: /home/runner/.pyenv/versions/3.10.20/bin/python3.10
-#> Creating virtual environment '/home/runner/.cache/R/basilisk/1.22.0/jupytextR/0.1.1/env' ... 
-#> + /home/runner/.pyenv/versions/3.10.20/bin/python3.10 -m venv /home/runner/.cache/R/basilisk/1.22.0/jupytextR/0.1.1/env
+#> Creating virtual environment '/home/runner/.cache/R/basilisk/1.24.0/jupytextR/0.1.1/env' ... 
+#> + /home/runner/.pyenv/versions/3.10.20/bin/python3.10 -m venv /home/runner/.cache/R/basilisk/1.24.0/jupytextR/0.1.1/env
 #> Done!
 #> Installing packages: pip, wheel, setuptools
-#> + /home/runner/.cache/R/basilisk/1.22.0/jupytextR/0.1.1/env/bin/python -m pip install --upgrade pip wheel setuptools
+#> + /home/runner/.cache/R/basilisk/1.24.0/jupytextR/0.1.1/env/bin/python -m pip install --upgrade pip wheel setuptools
 #> Installing packages: 'jupytext==1.14.6', 'nbformat==5.9.0', 'toml==0.10.2', 'PyYAML==6.0', 'markdown-it-py==2.2.0', 'mdit-py-plugins==0.4.0'
-#> + /home/runner/.cache/R/basilisk/1.22.0/jupytextR/0.1.1/env/bin/python -m pip install --upgrade --no-user 'jupytext==1.14.6' 'nbformat==5.9.0' 'toml==0.10.2' 'PyYAML==6.0' 'markdown-it-py==2.2.0' 'mdit-py-plugins==0.4.0'
-#> Virtual environment '/home/runner/.cache/R/basilisk/1.22.0/jupytextR/0.1.1/env' successfully created.
-#> Converting /tmp/RtmpLOUflI/file1b7e4d9f2399.Rmd to /tmp/RtmpLOUflI/file1b7e4d9f2399.ipynb
+#> + /home/runner/.cache/R/basilisk/1.24.0/jupytextR/0.1.1/env/bin/python -m pip install --upgrade --no-user 'jupytext==1.14.6' 'nbformat==5.9.0' 'toml==0.10.2' 'PyYAML==6.0' 'markdown-it-py==2.2.0' 'mdit-py-plugins==0.4.0'
+#> Virtual environment '/home/runner/.cache/R/basilisk/1.24.0/jupytextR/0.1.1/env' successfully created.
+#> Converting /tmp/RtmpaCCIwu/file1b2b35882804.Rmd to /tmp/RtmpaCCIwu/file1b2b35882804.ipynb
 ````
